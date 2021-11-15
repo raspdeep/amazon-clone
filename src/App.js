@@ -33,7 +33,7 @@ function App() {
         onSnapshot(qDetails, (snapshot) =>
           setCurrentUser(
             snapshot.docs.map((doc) => ({
-              id: doc.id,
+              // id: doc.id,
               data: doc.data(),
             }))
           )
@@ -51,10 +51,11 @@ function App() {
           )
         );
         //console.log("Query>>");
-        // dispatch({
-        //   type: "SET_USER_NAME",
-        //   email: authUser.email,
-        // });
+        dispatch({
+          type: "SET_USER",
+          user: { email: authUser.email },
+        });
+        setCurrentUser(user);
       } else {
         // user logged out
         dispatch({
@@ -76,7 +77,8 @@ function App() {
           address: currentUser[0].data.address,
           postal: currentUser[0].data.postal,
           phone: currentUser[0].data.phone,
-          email: currentUser[0].data.email,
+          //email: currentUser[0].data.email,
+          email: user.email,
         },
       });
     }

@@ -44,7 +44,7 @@ function NewUser() {
               phone: phone,
               address: address,
               postal: postal,
-              email: email,
+              //email: email,
             });
             console.log("New user written to cloud");
           } catch (e) {

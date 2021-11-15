@@ -49,23 +49,23 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
-    case "SET_USER_EMAIL":
-      return {
-        ...state,
-        user: { ...state.user, email: action.email },
-      };
-    case "SET_USER_NAME":
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          name: action.name,
-          address: action.address,
-          postal: action.postal,
-          phone: action.phone,
-          email: action.email,
-        },
-      };
+    // case "SET_USER_EMAIL":
+    //   return {
+    //     ...state,
+    //     user: { ...state.user, email: action.email },
+    //   };
+    // case "SET_USER_NAME":
+    //   return {
+    //     ...state,
+    //     user: {
+    //       ...state.user,
+    //       name: action.name,
+    //       address: action.address,
+    //       postal: action.postal,
+    //       phone: action.phone,
+    //       email: action.email,
+    //     },
+    //   };
     default:
       return state;
   }
