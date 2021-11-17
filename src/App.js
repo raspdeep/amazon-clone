@@ -22,6 +22,7 @@ function App() {
   const [{ basket, user }, dispatch] = useStateValue();
   const [currentUser, setCurrentUser] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -55,7 +56,7 @@ function App() {
           type: "SET_USER",
           user: { email: authUser.email },
         });
-        setCurrentUser(user);
+        //setCurrentUser(user);
       } else {
         // user logged out
         dispatch({
@@ -84,6 +85,30 @@ function App() {
     }
   }, [currentUser, dispatch]);
 
+  useEffect(() => {
+    const qProduct = query(
+      collection(db, "products"),
+      orderBy("title", "desc")
+    );
+    function shuffleProducts(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+      return array;
+    }
+    onSnapshot(qProduct, (snapshot) =>
+      setProducts(
+        shuffleProducts(snapshot.docs).map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []);
+
   return (
     //BEM
     <Router>
@@ -111,7 +136,7 @@ function App() {
           </Route>
           <Route path="/">
             <Header />
-            <Home />
+            <Home products={products} />
           </Route>
         </Switch>
       </div>

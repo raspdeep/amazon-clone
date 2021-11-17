@@ -79,6 +79,7 @@ function Login() {
           Sale. Please see our Privacy Notice, ourCookies Notice and our
           Interest-Based Ads Notice.
         </p>
+        <div className="login__dividerbreak"></div>
         <button
           className="login__registerButton"
           onClick={register}

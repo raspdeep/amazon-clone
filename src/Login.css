@@ -60,3 +60,23 @@
   border: 1px solid;
   margin-top: 10px;
 }
+
+.login__dividerbreak {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: none;
+  border-top: 1px double #e7e7e7;
+  color: #767676;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+.login__dividerbreak:after {
+  background: #fff;
+  content: "New to Amazon?";
+  padding: 0 10px;
+  position: relative;
+  top: -13px;
+  font-size: smaller;
+}
