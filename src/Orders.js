@@ -22,7 +22,7 @@ function Orders({ orders }) {
   //   }
   //   //console.log(orders);
   // }, [user, dispatch]);
-
+  window.scrollTo(0, 0);
   return (
     <div className="orders">
       <h1>Your Orders:</h1>

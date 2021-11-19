@@ -6,6 +6,7 @@ import Orders from "./Orders";
 import Checkout from "./Checkout";
 import Login from "./Login";
 import NewUser from "./NewUser";
+import Search from "./Search";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { auth, db } from "./firebase";
 import { query, collection, onSnapshot, orderBy } from "firebase/firestore";
@@ -23,6 +24,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -115,8 +117,12 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/orders">
-            <Header />
+            <Header setSearchInput={setSearchInput} />
             <Orders orders={orders} />
+          </Route>
+          <Route path="/search">
+            <Header setSearchInput={setSearchInput} />
+            <Search searchInput={searchInput} products={products} />
           </Route>
           <Route path="/newuser">
             <NewUser />
@@ -125,17 +131,17 @@ function App() {
             <Login />
           </Route>
           <Route path="/checkout">
-            <Header />
+            <Header setSearchInput={setSearchInput} />
             <Checkout />
           </Route>
           <Route path="/payment">
-            <Header />
+            <Header setSearchInput={setSearchInput} />
             <Elements stripe={promise}>
               <Payment />
             </Elements>
           </Route>
           <Route path="/">
-            <Header />
+            <Header setSearchInput={setSearchInput} />
             <Home products={products} />
           </Route>
         </Switch>

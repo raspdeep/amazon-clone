@@ -1,0 +1,20 @@
+.search {
+  padding: 20px 80px;
+}
+
+.search > h1 {
+  margin: 30px 0;
+}
+
+.order {
+  padding: 40px;
+  margin: 20px 0;
+  background-color: white;
+  position: relative;
+}
+
+.search__id {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}

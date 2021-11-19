@@ -21,17 +21,17 @@ function Home({ products }) {
     });
     return newProduct;
   };
-  const renderProduct = (item, index) => (
-    <Product
-      key={index}
-      id={item.id}
-      title={item.data.title}
-      price={item.data.price}
-      image={item.data.image}
-      rating={item.data.rating}
-    />
-  );
-
+  // const renderProduct = (item, index) => (
+  //   <Product
+  //     key={index}
+  //     id={item.id}
+  //     title={item.data.title}
+  //     price={item.data.price}
+  //     image={item.data.image}
+  //     rating={item.data.rating}
+  //   />
+  // );
+  //window.scrollTo(0, 0);
   return (
     <div className="home">
       <div className="home__container">
